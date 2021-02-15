@@ -11,7 +11,8 @@ class BudgetViewController: UIViewController {
     @IBOutlet weak var tableView:UITableView!
     //construimos el array de los botones del header y agregamos los 3 botones
     @IBOutlet var animatedButtons: [UIButton]!
-
+    @IBOutlet weak var animationLayout: NSLayoutConstraint! //es la orientación a la izquierda del view color verde que se estableció
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -45,7 +46,18 @@ class BudgetViewController: UIViewController {
     
     //agregamos la funcion para animar el Header y la unimos con los 3 botones
     @IBAction func animateHeader(sender:UIButton){
-        
+        //se obtiene el lugar donde comienza el botón que se recive
+        animationLayout.constant = sender.frame.origin.x
+        //se agrega la animación
+        UIView.animate(withDuration: 0.5, animations: {
+            self.view.layoutIfNeeded()
+        }, completion: { (completed) in
+            //esta parte del código se ejecuta cuando se ha terminado la animación
+            self.animatedButtons.forEach{
+                $0.setTitleColor(UIColor(named: "GreenShadow"), for: .normal)
+                sender.setTitleColor(UIColor.white, for: .normal)
+            }
+        })
     }
 
 }
