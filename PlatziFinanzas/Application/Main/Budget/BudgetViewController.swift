@@ -9,6 +9,8 @@ import UIKit
 
 class BudgetViewController: UIViewController {
     @IBOutlet weak var tableView:UITableView!
+    //construimos el array de los botones del header y agregamos los 3 botones
+    @IBOutlet var animatedButtons: [UIButton]!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,16 +43,10 @@ class BudgetViewController: UIViewController {
         tableView.register(cell, forCellReuseIdentifier: "cell")
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    //agregamos la funcion para animar el Header y la unimos con los 3 botones
+    @IBAction func animateHeader(sender:UIButton){
+        
     }
-    */
 
 }
 
